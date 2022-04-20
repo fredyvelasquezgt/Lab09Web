@@ -1,21 +1,22 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+/* eslint-disable import/no-unresolved */
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  mode: "development",
-  entry: "./index.js",
+  mode: 'development',
+  entry: './index.js',
   output: {
-    filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "bundle_sin_babel"),
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'bundle_sin_babel'),
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name].css",
+      filename: '[name].css',
     }),
     new HtmlWebpackPlugin({
-      template: "index.html",
-      chunks: ["index"],
+      template: 'index.html',
+      chunks: ['index'],
     }),
   ],
   module: {
@@ -24,7 +25,7 @@ module.exports = {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
           },
         ],
       },
@@ -35,7 +36,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
     ],
   },
@@ -44,15 +45,15 @@ module.exports = {
     rules: [
       {
         test: /\.(sass|less|css)$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.m?js$/,
         exclude: /(node_modules)/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
+            presets: ['@babel/preset-env', '@babel/preset-react'],
           },
         },
       },
